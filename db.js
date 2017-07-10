@@ -2,8 +2,8 @@ const Sequelize = require('sequelize');
 
 console.log('init sequelize...');
 
-var sequelize = new Sequelize('wms_v8_test', 'root', '123456', {
-    host: '192.168.1.201',
+var sequelize = new Sequelize('dzhupupup', 'root', '9RL04Pinv7j3', {
+    host: '115.159.183.79',
     dialect: 'mysql',
      define: {
         timestamps: false

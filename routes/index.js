@@ -1,18 +1,15 @@
 const router = require("koa-router")();
 const Sequelize = require("sequelize");
-const model = require("../model");
-
+ const model = require("../model");
 router.get("/qwe", async (ctx, next,id) => {
-  let test = model.G_TEST;
-  var qwe = await test.findAll({
+   let test = model.test_g;
+   var qwe = await test.findAll({
     where: {
-      name6: "0"
+      name:'dzh' 
     }
   });
-  console.dir(qwe[0].id);
-  await ctx.render("index", {
-    title: ctx.query.id
-  });
+ 
+  ctx.body =qwe
 });
 
 router.get("/string", async (ctx, next) => {
