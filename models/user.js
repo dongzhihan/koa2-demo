@@ -18,6 +18,18 @@ module.exports = function(sequelize, DataTypes) {
     desName: {
       type: DataTypes.STRING(255),
       allowNull: true
+    },
+    sex: {
+      type: DataTypes.STRING(255),
+      allowNull: true
+    },
+    phone: {
+      type: DataTypes.STRING(255),
+      allowNull: true
+    },
+    e_mail: {
+      type: DataTypes.STRING(255),
+      allowNull: true
     }
   }, {
     tableName: 'user'

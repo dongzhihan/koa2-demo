@@ -1,27 +1,17 @@
 const router = require("koa-router")();
-const Sequelize = require("sequelize");
 const model = require("../model");
-router.get("/qwe", async(ctx, next, id) => {
-  let test = model.test_g;
-  var qwe = await test.findById({
-    where: {
-      name: 'dzh'
-    }
-  });
-
-  ctx.body = qwe
-});
+ 
 
 router.post("/login", async(ctx, next) => {
   let user = model.user;
-  var qwe = await user.findAll({
+  var pass = await user.findAll({
     where: {
       name: ctx.request.body.name,
       password: ctx.request.body.password
     }
   })
-  if (qwe.length > 0) {
-    ctx.body = true;
+  if (pass.length > 0) {
+    ctx.body = pass[0].id;
   } else {
     ctx.body = false;
   }
