@@ -1,22 +1,26 @@
 /* jshint indent: 2 */
 
 module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('note', {
-    noteid: {
-      type: DataTypes.INTEGER(255).UNSIGNED.ZEROFILL,
+  return sequelize.define('folder', {
+    folderId: {
+      type: DataTypes.INTEGER(11),
       allowNull: false,
       primaryKey: true,
       autoIncrement: true
     },
-    folderId: {
-      type: DataTypes.INTEGER(11),
-      allowNull: false
+    type: {
+      type: DataTypes.STRING(255),
+      allowNull: true
     },
-    text: {
+    userid: {
+      type: DataTypes.INTEGER(11),
+      allowNull: true
+    },
+    folderName: {
       type: DataTypes.STRING(255),
       allowNull: true
     }
   }, {
-    tableName: 'note'
+    tableName: 'folder'
   });
 };

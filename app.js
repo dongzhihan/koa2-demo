@@ -8,6 +8,7 @@ const logger = require('koa-logger')
 
 const index = require('./routes/index')
 const users = require('./routes/users')
+const notes = require('./routes/note')
 var koa = require('koa');
  
 var cors = require('koa-cors');
@@ -35,5 +36,5 @@ app.use(views(__dirname + '/views', {
 // routes
 app.use(index.routes(), index.allowedMethods())
 app.use(users.routes(), users.allowedMethods())
-
+app.use(notes.routes(), notes.allowedMethods())
 module.exports = app
