@@ -20,33 +20,21 @@ router.post('/folder', async function (ctx, next) {
             type: ctx.request.body.type,
             userid: ctx.request.body.userid,
             folderName: ctx.request.body.foldername,
-            createDate:ctx.request.body.createdate,
+            createDate: ctx.request.body.createdate,
         })
-        ctx.body=0;
-    } else {  
-    }
+        ctx.body = 0;
+    } else {}
 })
 
 //查询所有文件夹
-router.post('/folder', async function (ctx, next) {
+router.get('/getFolder', async function (ctx, next) {
     let folder = model.folder;
-
     var pass = await folder.findAll({
         where: {
-            userid: ctx.request.body.userid,
-            folderName: ctx.request.body.foldername
+            userid: ctx.query.userid
         }
     })
-    if (pass.length == 0) {
-        await folder.create({
-            type: ctx.request.body.type,
-            userid: ctx.request.body.userid,
-            folderName: ctx.request.body.foldername,
-            createDate:ctx.request.body.createdate,
-        })
-        ctx.body=0;
-    } else {  
-    }
+ctx.body = pass;
 })
 
 router.get('/bar', function (ctx, next) {
