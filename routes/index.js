@@ -18,15 +18,14 @@ router.post("/login", async (ctx, next) => {
 });
 
 router.get("/query", async (ctx, next) => {
- 
   ctx.body = await db.query(ctx.query.sql, {
     type: Sequelize.QueryTypes.SELECT
   });
 });
 router.get("/code", async (ctx, next) => {
- var codeVar={};
-  await eval (ctx.query.code)
-  ctx.body = codeVar
+  var codeVar = {};
+  await eval(ctx.query.code);
+  ctx.body = codeVar;
 });
 
 router.get("/json", async (ctx, next) => {
