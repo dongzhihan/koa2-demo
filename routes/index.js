@@ -35,12 +35,11 @@ router.get("/query", async (ctx, next) => {
 });
 router.get("/code", async (ctx, next) => {
   var codeVar = {};
-  await eval(ctx.query.code);
+  await eval(ctx.query.code); 
   ctx.body = codeVar;
 });
 router.get("/orientCode", async (ctx, next) => {
-  let a =await db.class.create('nodejsV1')
-  ctx.body =  a.name;
+  ctx.body = await    db.select().from('Player').all()
 });
 router.get("/json", async (ctx, next) => {
   ctx.body = {
