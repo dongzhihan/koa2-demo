@@ -1,6 +1,6 @@
 var router = require("koa-router")();
 var model = require("../model");
-var db = require("../db");
+var dbs = require("../db");
 var Sequelize = require("sequelize");
 
 //////////关于orientdb连接配置
@@ -29,9 +29,16 @@ router.post("/login", async (ctx, next) => {
 });
 
 router.get("/query", async (ctx, next) => {
-  ctx.body = await db.query(ctx.query.sql, {
+/*   ctx.body = await db.query(ctx.query.sql, {
+    type: Sequelize.QueryTypes.SELECT
+  }); */
+
+   // await dbs.query(`insert into test values('${i}','${i+1}','${i*2}','${i+2}') `, {
+      ctx.body =   await dbs.query(`select * from test`, {
     type: Sequelize.QueryTypes.SELECT
   });
+
+
 });
 router.get("/code", async (ctx, next) => {
   var codeVar = {};
@@ -39,7 +46,9 @@ router.get("/code", async (ctx, next) => {
   ctx.body = codeVar;
 });
 router.get("/orientCode", async (ctx, next) => {
-  ctx.body = await    db.select().from('Player').all()
+
+       
+      ctx.body =await db.select().from('Player').all()
 });
 router.get("/json", async (ctx, next) => {
   ctx.body = {
