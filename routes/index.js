@@ -1,18 +1,18 @@
 var router = require("koa-router")();
+var xml2js = require("xml2js");
 var model = require("../model");
 var dbs = require("../db");
 var Sequelize = require("sequelize");
-
-//////////关于orientdb连接配置
-var ODatabase = require("orientjs").ODatabase;
-var db = new ODatabase({
-  host: "10.10.1.10",
-  port: 2424,
-  username: "root",
-  password: "123456",
-  name: "TEST"
-});
-//////////////////
+require("../public/sql/libs/blockly/blockly_compressed");
+require("../public/sql/libs/blockly/blocks_compressed");
+require("../public/sql/src/constants");
+require("../public/sql/src/generator/sql");
+require("../public/sql/src/generator/blocks/commands");
+require("../public/sql/src/generator/blocks/fields");
+require("../public/sql/src/generator/blocks/functions");
+require("../public/sql/src/generator/blocks/operators");
+require("../public/sql/src/generator/blocks/values");
+require("../public/sql/src/lang/en");
 router.post("/login", async (ctx, next) => {
   let user = model.user;
   var pass = await user.findAll({
@@ -29,26 +29,23 @@ router.post("/login", async (ctx, next) => {
 });
 
 router.get("/query", async (ctx, next) => {
-/*   ctx.body = await db.query(ctx.query.sql, {
-    type: Sequelize.QueryTypes.SELECT
-  }); */
-
-   // await dbs.query(`insert into test values('${i}','${i+1}','${i*2}','${i+2}') `, {
-      ctx.body =   await dbs.query(`select * from test`, {
+  ctx.body = await dbs.query(ctx.query.sql, {
     type: Sequelize.QueryTypes.SELECT
   });
 
+  // await dbs.query(`insert into test values('${i}','${i+1}','${i*2}','${i+2}') `, {
 
+  /*   ctx.body = await dbs.query(`select * from test`, {
+    type: Sequelize.QueryTypes.SELECT
+  }); */
 });
 router.get("/code", async (ctx, next) => {
   var codeVar = {};
-  await eval(ctx.query.code); 
+  await eval(ctx.query.code);
   ctx.body = codeVar;
 });
 router.get("/orientCode", async (ctx, next) => {
-
-       
-      ctx.body =await db.select().from('Player').all()
+  ctx.body = await db.select().from("Player").all();
 });
 router.get("/json", async (ctx, next) => {
   ctx.body = {
@@ -56,4 +53,18 @@ router.get("/json", async (ctx, next) => {
   };
 });
 
+//workpase 回传
+router.post("/workspace", async (ctx, next) => {
+  // var builder = new xml2js.Builder();
+  //  xml =  builder.buildObject({xml:ctx.request.body.workspace});
+  var workspace = new Blockly.Workspace();
+
+  var xml = Blockly.Xml.textToDom(ctx.request.body.workspace);
+  Blockly.Xml.domToWorkspace(xml, workspace);
+  var code = SQLBlockly.SQLGen.workspaceToCode(workspace);
+  console.log(code)
+  ctx.body = {
+    title: 1
+  };
+});
 module.exports = router;
