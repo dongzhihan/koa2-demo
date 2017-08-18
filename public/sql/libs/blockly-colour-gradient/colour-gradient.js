@@ -17,7 +17,7 @@
     @file
     colour-gradient.js
 */
-function ColourGradient() {
+  ColourGradient= function ColourGradient() {
 
     var svg = null;		/* SVG root Element */
     var svgNS = null;	/* SVG namespace */
@@ -27,11 +27,11 @@ function ColourGradient() {
 	/**
      * Constructor inits SVG DOM.
      */
-    var __construct = function() {
+/*     var __construct = function() {
         svg = document.getElementsByTagName("svg")[0];
         defs = svg.getElementsByTagName("defs")[0];   
         svgNS = svg.namespaceURI;
-    }()
+    }() */
 
     /**
      * Setting a horizontal colour gradient from the colour of this block

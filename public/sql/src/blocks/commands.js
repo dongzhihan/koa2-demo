@@ -130,14 +130,14 @@ Blockly.Blocks["select"] = {
     if (!this.workspace) return;
 
     var inputs = ["Clause", "limit", "group_by", "having", "order_by", "sort"];
-    this.gradient.setVerticalGradient(
+/*     this.gradient.setVerticalGradient(
       this,
       {
         start: "#5BA58C",
         stop: sqlHelp.getChildColour(this)
       },
       inputs
-    );
+    ); */
   }
 };
 

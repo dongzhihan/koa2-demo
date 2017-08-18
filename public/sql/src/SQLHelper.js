@@ -1,4 +1,4 @@
-function SQLHelper() {
+SQLHelper=function SQLHelper() {
   var __construct = (function() {})();
 
   this.separateTableFromColumn = function(column) {
@@ -156,7 +156,7 @@ function SQLHelper() {
       options[0][0] = "*";
       options[0][1] = "*";
     }
-
+     console.log(columns,1)
     for (var i = 0; i < columns.length; i++) {
       var optCnt = i;
 
@@ -452,5 +452,5 @@ function SQLHelper() {
     }
   }.bind(this);
 } /* End of Class */
-window.sqlHelp = new SQLHelper();
-console.log(window.sqlHelp);
+ sqlHelp = new SQLHelper();
+ 

@@ -19546,7 +19546,7 @@ exports.UndoManager = UndoManager;
 exports.version = "1.2.8";
 });
             (function() {
-                window.require(["ace/ace"], function(a) {
+                require(["ace/ace"], function(a) {
                     if (a) {
                         a.config.init(true);
                         a.define = window.define;

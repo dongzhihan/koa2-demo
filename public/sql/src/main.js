@@ -21,7 +21,7 @@
  * @author Michael Kolodziejczyk, SPE Systemhaus GmbH (since 2016)			   *
  *******************************************************************************/
 
-var dbStructure = {}; // Global Database Structure
+  // Global Database Structure
 var editor = null; // Global SQL Code Editor variable
 var selected = null; // Object of the element to be moved
 var x_pos = 0,
@@ -389,7 +389,7 @@ function getDataSourceNames() {
   xhr.send();
 }
 
-function updateDataSourceNames(dataSourceNames) {
+updateDataSourceNames=function updateDataSourceNames(dataSourceNames) {
   var select = document.getElementById("dataSourceNames");
   var first = true;
 
@@ -421,7 +421,7 @@ function updateDataSourceNames(dataSourceNames) {
  * 
  * @param {String} dsn Data Source Name of the ODBC connection.
  */
-function loadDatabaseStructure(select) {
+loadDatabaseStructure=function loadDatabaseStructure(select) {
   var load = true;
   if (Blockly.mainWorkspace)
     load = confirm(SQLBlocks.Msg.User.CONFIRM_LOAD_WORKSPACE);
@@ -435,11 +435,9 @@ function loadDatabaseStructure(select) {
   getDBStructure();
 }
 
-dbStructure = {
-  
-};
-console.log(dbStructure);
-function getDBStructure() {
+ 
+ 
+getDBStructure=function getDBStructure() {
   var xhr = new XMLHttpRequest();
   xhr.open("GET", "databases/" + SQLBlockly.DSN + ".json", true);
   xhr.responseType = "json";
@@ -456,7 +454,7 @@ function getDBStructure() {
   xhr.send();
 }
 
-function showNotification(message, time) {
+showNotification=function showNotification(message, time) {
   var notifications = document.getElementById("notifications");
   notifications.innerHTML = message;
   notifications.style.visibility = "visible";
@@ -468,7 +466,7 @@ function showNotification(message, time) {
   }, time * 1000);
 }
 
-function hideNotification(time) {
+hideNotification=function hideNotification(time) {
   var notifications = document.getElementById("notifications");
   notifications.style.visibility = "hidden";
   notifications.style.opacity = 0;
@@ -482,7 +480,7 @@ function hideNotification(time) {
  * 
  * @return {Array} tables All tables that 
  */
-function getTablesArrayFromStructure() {
+getTablesArrayFromStructure=function getTablesArrayFromStructure() {
   return Object.keys(dbStructure);
 }
 
@@ -493,6 +491,8 @@ function getTablesArrayFromStructure() {
  * @param {String} tableName Name of the table, that should return his columns.
  * @return {Array} columns All columns that are in the table.
  */
-function getColumnsArrayFromStructure(tableName) {
+getColumnsArrayFromStructure=function getColumnsArrayFromStructure(tableName) {
+  console.log(dbStructure,4)
   return dbStructure[tableName];
+
 }

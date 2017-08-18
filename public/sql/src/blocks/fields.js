@@ -13,6 +13,7 @@
  * @module sql_blocks
  * @class tables_and_columns
  *-----------------------------------------------------------------------------*/
+ 
 Blockly.Blocks["tables_and_columns"] = {
   /**
      * Initialization of the table_and_colums block.
@@ -23,6 +24,7 @@ Blockly.Blocks["tables_and_columns"] = {
      */
   init: function() {
     this.table = Object.keys(dbStructure)[0];
+    console.log( this.table )
     this.column = "*";
 
     this.setHelpUrl(this.type);
@@ -179,7 +181,9 @@ Blockly.Blocks["tables_and_columns_var"] = {
      */
   init: function() {
     var table = Object.keys(dbStructure)[0];
+    console.log(  table )
     var column = dbStructure[table][0].name;
+    console.log(column,3)
     this.columnType = null;
     this.setHelpUrl(this.type);
     this.setColour(SQLBlockly.Colours.list);

@@ -1,4 +1,4 @@
-window.BlocklyPlugins = window.BlocklyPlugins || {};
+ BlocklyPlugins =   {};
 /*
   A wrapper for the window and Blockly related Events, that are not implemented in Blockly.
 
@@ -94,5 +94,6 @@ window.BlocklyPlugins = window.BlocklyPlugins || {};
   });
 
   Events.check();
+  BlocklyPlugins={};
   BlocklyPlugins.Events = Events;
 })();
