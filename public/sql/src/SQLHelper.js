@@ -157,7 +157,7 @@ SQLHelper=function SQLHelper() {
       options[0][1] = "*";
     }
      console.log(columns,1)
-    for (var i = 0; i < columns.length; i++) {
+/*    for (var i = 0; i < columns.length; i++) {
       var optCnt = i;
 
       if (withAll) optCnt++;
@@ -165,7 +165,7 @@ SQLHelper=function SQLHelper() {
       options[optCnt] = new Array();
       options[optCnt][0] = columns[i].name;
       options[optCnt][1] = columns[i].name;
-    }
+    }*/
 
     return options;
   };

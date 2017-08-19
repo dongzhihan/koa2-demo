@@ -90,7 +90,7 @@ Blockly.Blocks["tables_and_columns"] = {
     tableDropdown.setValue(this.table);
     columnDropdown.setValue(this.column);
 
-    block.setColour(sqlHelp.getTypeColour(this.table, this.column));
+    //block.setColour(sqlHelp.getTypeColour(this.table, this.column));
 
     block
       .appendDummyInput("Table")
@@ -212,7 +212,7 @@ Blockly.Blocks["tables_and_columns_var"] = {
       }
     );
     var columnDropdown = new Blockly.FieldDropdown(
-      sqlHelp.getColumnDropdowndata(table, false),
+       [],
       function(column) {
         var table = block.getFieldValue("tabele");
         var type = sqlHelp.getType(table, column);
@@ -230,7 +230,7 @@ Blockly.Blocks["tables_and_columns_var"] = {
     tableDropdown.setValue(table);
     columnDropdown.setValue(column);
 
-    block.setColour(sqlHelp.getTypeColour(table, column));
+    //block.setColour(sqlHelp.getTypeColour(table, column));
 
     block
       .appendDummyInput("Table")

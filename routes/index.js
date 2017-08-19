@@ -77,7 +77,7 @@ router.post("/workspace", async (ctx, next) => {
   
   //  xml =  builder.buildObject({xml:ctx.request.body.workspace});
   //dbStructure=ctx.request.body.dbStructure;
-  dbStructure={ folder:
+  dbStructure={ qwe:
    [ { name: 'folderId', type: 'int' },
  ]  };
   console.log(dbStructure)
