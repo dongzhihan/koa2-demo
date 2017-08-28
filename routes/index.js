@@ -7,10 +7,10 @@ require("../public/sql/libs/blockly/blockly_compressed");
 require("../public/sql/libs/blockly/blocks_compressed");
 
 require("../public/sql/libs/blockly-colour-gradient/colour-gradient");
- 
+
 require("../public/sql/libs/blockly-type-indicator/typeIndicator");
 require("../public/sql/libs/blockly-events/events.js");
-       
+
 //require("../public/sql/libs/ace-builds/src/ace");
 require("../public/sql/src/exceptions");
 require("../public/sql/src/Language");
@@ -47,7 +47,8 @@ router.post("/login", async (ctx, next) => {
 });
 
 router.get("/query", async (ctx, next) => {
-  ctx.body = await dbs.query(ctx.query.sql, {
+  ctx.body = await dbs.query("select * from DzhTest", {
+    // ctx.body = await dbs.query(ctx.query.sql, {
     type: Sequelize.QueryTypes.SELECT
   });
 
@@ -74,14 +75,14 @@ router.get("/json", async (ctx, next) => {
 //workpase 回传
 router.post("/workspace", async (ctx, next) => {
   // var builder = new xml2js.Builder();
-  
+
   //  xml =  builder.buildObject({xml:ctx.request.body.workspace});
   //dbStructure=ctx.request.body.dbStructure;
-  dbStructure={ qwe:
-   [ { name: 'folderId', type: 'int' },
- ]  };
-  console.log(dbStructure)
-   require("../public/sql/src/blocks/fields");
+  dbStructure = {
+    qwe: [{ name: "", type: "" }]
+  };
+  console.log(dbStructure);
+  require("../public/sql/src/blocks/fields");
   var workspace = new Blockly.Workspace();
   var xml = Blockly.Xml.textToDom(ctx.request.body.workspace);
   Blockly.Xml.domToWorkspace(xml, workspace);

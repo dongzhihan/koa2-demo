@@ -2,11 +2,12 @@ const Sequelize = require('sequelize');
 
 console.log('init sequelize...');
 
-var sequelize = new Sequelize('dzhupupup', 'root', '9RL04Pinv7j3', {
+var sequelize = new Sequelize('test', 'root', '123456', {
 //var sequelize = new Sequelize('test', 'root', '123456', {
-   host: '115.159.183.79',  //腾讯云主机
+   host: '10.10.1.21',  //腾讯云主机
  // host: '10.10.1.10',
     dialect: 'mysql',
+    port:4000,
      define: {
         timestamps: false
     }
